@@ -3,7 +3,7 @@
     {% if pagination.previous %}
       <a
         href="{{ pagination.previous.url }}"
-        class="text-black hover:bg-black hover:text-white p-3 mx-1 rounded-sm font-medium shadow-md"
+        class="text-black hover:bg-black hover:text-white p-3 mx-1 font-medium shadow-md rounded-full"
       >
         {% render 'chevron-left' %}
       </a>
@@ -12,14 +12,14 @@
       {% for part in pagination.parts %}
         {% if part.is_link %}
           <span
-            class="p-3 px-4 m-0 rounded-sm font-medium shadow-md bg-black text-white text-sm"
+            class="p-3 px-4 m-0 rounded-sm font-medium shadow-md bg-white text-black text-sm hover:bg-black hover:text-white"
             href="{{ part.url }}"
           >
             {{- part.title -}}
           </span>
         {% else %}
           <a
-            class="text-black hover:bg-black hover:text-white p-3 px-4 m-0 rounded-sm font-medium shadow-md text-sm"
+            class="text-white bg-black p-3 px-4 m-0 rounded-sm font-medium shadow-md text-sm"
             href="{{ part.url }}"
           >
             {{- part.title -}}
@@ -30,7 +30,7 @@
     {% if pagination.next %}
       <a
         href="{{ pagination.next.url }}"
-        class="text-black hover:bg-black hover:text-white p-3 mx-1 rounded-sm font-medium shadow-md"
+        class="text-black hover:bg-black hover:text-white p-3 mx-1 font-medium shadow-md rounded-full"
       >
         {% render 'chevron-right' %}
       </a>
