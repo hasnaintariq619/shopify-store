@@ -1,13 +1,15 @@
-<header class="max-w-6xl mx-6 p-6">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:justify-between">
-    <div>
-      <h1 class="text-4xl font-bold text-gray-900">{{ section.settings.main_title }}</h1>
-      <p class="mt-4 text-gray-600">
-        {{ section.settings.sub_main_para }}
-      </p>
-    </div>
-    <div>
-      {% render 'deer-image' %}
+<header id="main-header" class="h-180 md:h-screen">
+  <div class="max-w-6xl mx-auto my-0 p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:justify-between">
+      <div>
+        <h1 class="text-4xl font-bold text-gray-900">{{ section.settings.main_title }}</h1>
+        <p class="mt-4 text-gray-600">
+          {{ section.settings.sub_main_para }}
+        </p>
+      </div>
+      <div>
+        {% render 'deer-image' %}
+      </div>
     </div>
   </div>
 </header>
