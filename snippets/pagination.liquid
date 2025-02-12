@@ -11,12 +11,12 @@
     <div class="mx-auto text-bold text-md">
       {% for part in pagination.parts %}
         {% if part.is_link %}
-          <span
+          <a
             class="p-3 px-4 m-0 rounded-sm font-medium shadow-md bg-white text-black text-sm hover:bg-black hover:text-white"
             href="{{ part.url }}"
           >
             {{- part.title -}}
-          </span>
+          </a>
         {% else %}
           <a
             class="text-white bg-black p-3 px-4 m-0 rounded-sm font-medium shadow-md text-sm"
