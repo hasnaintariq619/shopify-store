@@ -23,6 +23,7 @@
         x-show="{{ mobile_link_handle }}"
         @click.away="{{ mobile_link_handle }}= false"
         class="grid gap-y-7 py-3 md:py-0"
+        x-cloak
       >
         {% for childlink in link.links %}
           <a

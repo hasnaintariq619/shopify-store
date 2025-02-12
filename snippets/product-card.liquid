@@ -27,12 +27,12 @@
         <p class="text-gray-500">{{ _product.price | money }}</p>
         <input type="hidden" name="id" value="{{ _product.variants.first.id }}">
         <input min="1" type="number" id="quantity" name="quantity" value="1" class="hidden">
-        <a
-          href="{{ routes.cart_add_url }}?quantity=1"
+        <button
+          type="submit"
           class="bg-black text-white border hover:bg-white hover:text-black p-2 decoration-none rounded-full shadow-md"
         >
           {% render 'icon-shopping-bag', class: 'h-4 w-4' %}
-        </a>
+        </button>
       </div>
     </div>
   </div>
