@@ -34,11 +34,11 @@
         {% endfor %}
       </div>
       <div class="md:hidden">
-        <div class="swiper h-94">
+        <div class="swiper">
           <div class="swiper-wrapper">
             {% for media in product.media %}
               <div class="swiper-slide">
-                <div class="h-80 overflow-hidden p-2">
+                <div class="h-[100vw] overflow-hidden p-2">
                   {% render 'product-media', media: media %}
                 </div>
               </div>
@@ -79,9 +79,9 @@
                 {% endif %}
               </div>
             {% when 'variant_selector' %}
-              <variant-selector class="my-3">
+              <div class="my-3">
                 {% unless product.has_only_default_variant %}
-                  <div data-url="{{ product.url }}" data-section="{{ section.id }}">
+                  <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
                     {% for option in product.options_with_values %}
                       <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
 
@@ -107,9 +107,9 @@
                         {{ product.variants | json }}
                       </script>
                     {% endfor %}
-                  </div>
+                  </variant-selector>
                 {% endunless %}
-              </variant-selector>
+              </div>
 
             {% when 'quantity' %}
               <div class="my-3">
@@ -166,7 +166,7 @@
 
     onChangeVariant() {
       this.getVariantOptions();
-      this.getVariantJSONData();
+      this.getSelectedVariant();
 
       if (this.currentVariant) {
         this.updateURL();
@@ -188,7 +188,6 @@
         const findings = variant.options.every((option, index) => {
           return this.options[index] === option;
         });
-        console.log(findings, variant.options, this.options);
         if (findings) return variant;
       });
     }
@@ -201,7 +200,6 @@
       form_input.value = this.currentVariant.id;
     }
     updatePrice() {
-      console.log('update price...');
       fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
         .then((response) => response.text())
         .then((responseText) => {
@@ -218,17 +216,23 @@
   customElements.define('variant-selector', VariantSelector);
 </script>
 <script>
-  const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+      const swiper = new Swiper('.swiper', {
+        direction: 'horizontal',
 
-    pagination: {
-      el: '.swiper-pagination',
-    },
+        pagination: {
+          el: '.swiper-pagination',
+        },
 
-    navigation: {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next',
-    },
+        navigation: {
+          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next',
+        },
+      });
+    } catch (err) {
+      console.log('Swiper.js is not defined');
+    }
   });
 </script>
 
