@@ -18,8 +18,8 @@
           <div class="overflow-hidden w-full min-h-80 shadow-md lg:h-80">
             {% if line_item.image %}
               <img
-                height=""
-                width=""
+                height="auto"
+                width="auto"
                 class="w-full h-full object-cover object-center rounded-sm"
                 src="{{ line_item.image | img_url: 'medium' }}"
                 alt="{{ line_item.image.alt }}"
